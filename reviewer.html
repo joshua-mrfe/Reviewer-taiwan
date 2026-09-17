@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reviewer sa Taiwan </title>
+<style>
+  *{box-sizing:border-box}
+  body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f4f7fb;color:#172033}
+  header{background:linear-gradient(135deg,#4f46e5,#7c3aed);color:white;padding:32px 20px;text-align:center}
+  header h1{margin:0 0 8px;font-size:clamp(28px,5vw,46px)}
+  header p{margin:0;font-size:16px;opacity:.92}
+  .container{max-width:1050px;margin:25px auto;padding:0 16px}
+  .tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+  button,.tab{border:0;border-radius:10px;padding:12px 16px;font-weight:bold;cursor:pointer;transition:.2s}
+  button:hover,.tab:hover{transform:translateY(-1px)}
+  .tab{background:#e4e8f3;color:#25304b}
+  .tab.active{background:#4f46e5;color:white}
+  .card{background:white;border-radius:18px;padding:25px;box-shadow:0 8px 25px #17203312;margin-bottom:20px}
+  .hidden{display:none}
+  h2{margin-top:0;color:#3730a3}
+  h3{color:#4338ca}
+  .rule{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:15px 0}
+  .rule div{padding:15px;background:#eef2ff;border-radius:12px;text-align:center}
+  .example{background:#111827;color:#f9fafb;border-radius:12px;padding:18px;font-size:22px;text-align:center;margin:15px 0}
+  .step{border-left:4px solid #6366f1;padding:10px 14px;margin:10px 0;background:#f5f3ff;border-radius:0 10px 10px 0}
+  .tip{background:#ecfdf5;border-left:4px solid #10b981;padding:14px;border-radius:8px}
+  .quiz-question{font-size:28px;text-align:center;font-weight:bold;margin:22px 0}
+  input{width:100%;max-width:320px;padding:13px;border:2px solid #d1d5db;border-radius:10px;font-size:18px}
+  .primary{background:#4f46e5;color:white}
+  .secondary{background:#e5e7eb;color:#111827}
+  .success{color:#047857;font-weight:bold}
+  .error{color:#b91c1c;font-weight:bold}
+  .progress{height:12px;background:#e5e7eb;border-radius:99px;overflow:hidden;margin:12px 0}
+  .progress span{display:block;height:100%;background:#10b981;width:0%;transition:.3s}
+  .choice-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;max-width:500px;margin:15px auto}
+  .choice{background:#eef2ff;color:#312e81}
+  .choice.selected{outline:3px solid #6366f1}
+  .badge{display:inline-block;background:#ede9fe;color:#5b21b6;border-radius:99px;padding:6px 10px;font-size:13px;font-weight:bold}
+  footer{text-align:center;color:#6b7280;padding:20px}
+  @media(max-width:600px){.card{padding:18px}.choice-grid{grid-template-columns:1fr}.example{font-size:19px}}
+
+  .exam-option{background:#f3f4f6;color:#111827;text-align:left;border:2px solid #e5e7eb}
+  .exam-option.chosen{background:#e0e7ff;border-color:#4f46e5}
+  .exam-sheet{border:1px solid #d1d5db;padding:15px;border-radius:10px;background:#fafafa}
+</style>
+</head>
+<body>
+<header>
+  <h1> Reviewer </h1>
+  <p>Learn the rules, follow the steps, and practice at your own pace</p>
+</header>
+
+<main class="container">
+  <div class="tabs">
+    <button class="tab active" onclick="showTab('learn',this)">📘 Learn</button>
+    <button class="tab" onclick="showTab('examples',this)">🔎 Examples</button>
+    <button class="tab" onclick="showTab('practice',this)">✏️ Practice</button>
+    <button class="tab" onclick="showTab('challenge',this)">🏆 Challenge</button>
+    <button class="tab" onclick="showTab('exam',this)">Taiwan Exam</button>
+    <button class="tab" onclick="showTab('interview',this)">🗣️ Taiwan Interview</button>
+  </div>
+
+  <section id="learn">
+    <div class="card">
+      <span class="badge">Lesson 1</span>
+      <h2>What is MDAS?</h2>
+      <p>MDAS tells us the order to follow when solving a math expression.</p>
+      <div class="rule">
+        <div><b>M</b><br>Multiplication ×</div>
+        <div><b>D</b><br>Division ÷</div>
+        <div><b>A</b><br>Addition +</div>
+        <div><b>S</b><br>Subtraction −</div>
+      </div>
+      <div class="tip"><b>Remember:</b> Multiplication and division are solved from left to right. Addition and subtraction are also solved from left to right.</div>
+    </div>
+
+    <div class="card">
+      <span class="badge">Lesson 2</span>
+      <h2>What is PEMDAS?</h2>
+      <p>PEMDAS adds parentheses and exponents to the order of operations.</p>
+      <div class="rule">
+        <div><b>P</b><br>Parentheses ( )</div>
+        <div><b>E</b><br>Exponents ²</div>
+        <div><b>M/D</b><br>Multiply & Divide</div>
+        <div><b>A/S</b><br>Add & Subtract</div>
+      </div>
+      <p><b>Correct order:</b> Parentheses → Exponents → Multiplication/Division → Addition/Subtraction.</p>
+      <div class="tip"><b>Important:</b> MD and AS are equal partners. Do not always multiply before dividing or add before subtracting.</div>
+    </div>
+
+    <div class="card">
+      <span class="badge">Quick Check</span>
+      <h2>Which operation comes first?</h2>
+      <p>For the expression: <b>8 + 4 × 2</b></p>
+      <div class="choice-grid">
+        <button class="choice" onclick="quickCheck(this,false)">Addition</button>
+        <button class="choice" onclick="quickCheck(this,true)">Multiplication</button>
+      </div>
+      <p id="quickFeedback"></p>
+    </div>
+  </section>
+
+  <section id="examples" class="hidden">
+    <div class="card">
+      <h2>Worked Examples</h2>
+      <h3>Example 1: MDAS</h3>
+      <div class="example">10 + 20 ÷ 5 × 2</div>
+      <div class="step">Step 1: Divide → 20 ÷ 5 = 4</div>
+      <div class="step">Step 2: Multiply → 4 × 2 = 8</div>
+      <div class="step">Step 3: Add → 10 + 8 = <b>18</b></div>
+
+      <h3>Example 2: PEMDAS with parentheses</h3>
+      <div class="example">(6 + 2) × 3</div>
+      <div class="step">Step 1: Parentheses → 6 + 2 = 8</div>
+      <div class="step">Step 2: Multiply → 8 × 3 = <b>24</b></div>
+
+      <h3>Example 3: Exponents</h3>
+      <div class="example">2 + 3² × 2</div>
+      <div class="step">Step 1: Exponent → 3² = 9</div>
+      <div class="step">Step 2: Multiply → 9 × 2 = 18</div>
+      <div class="step">Step 3: Add → 2 + 18 = <b>20</b></div>
+
+      <h3>Example 4: Left to right</h3>
+      <div class="example">24 ÷ 6 × 2</div>
+      <div class="step">Step 1: Divide → 24 ÷ 6 = 4</div>
+      <div class="step">Step 2: Multiply → 4 × 2 = <b>8</b></div>
+      <p class="tip">Do not multiply first just because M appears before D in PEMDAS.</p>
+    </div>
+  </section>
+
+  <section id="practice" class="hidden">
+    <div class="card">
+      <span class="badge">Practice Mode</span>
+      <h2>Test Your Skills</h2>
+      <p>Answer the question, then check your work. You can generate a new question anytime.</p>
+      <div class="progress"><span id="practiceProgress"></span></div>
+      <p id="practiceCount">Question 1</p>
+      <div class="quiz-question" id="practiceQuestion"></div>
+      <div style="text-align:center">
+        <input id="practiceAnswer" type="number" placeholder="Your answer" onkeydown="if(event.key==='Enter')checkPractice()">
+        <br><br>
+        <button class="primary" onclick="checkPractice()">Check Answer</button>
+        <button class="secondary" onclick="newPractice()">New Question</button>
+      </div>
+      <p id="practiceFeedback" style="text-align:center;margin-top:18px"></p>
+    </div>
+  </section>
+
+  <section id="challenge" class="hidden">
+    <div class="card">
+      <span class="badge">Challenge Mode</span>
+      <h2>Can You Get 5 Correct?</h2>
+      <p>Answer five mixed MDAS and PEMDAS questions. Your score updates automatically.</p>
+      <div class="quiz-question" id="challengeQuestion"></div>
+      <div style="text-align:center">
+        <input id="challengeAnswer" type="number" placeholder="Your answer" onkeydown="if(event.key==='Enter')checkChallenge()">
+        <br><br>
+        <button class="primary" onclick="checkChallenge()">Submit</button>
+        <button class="secondary" onclick="startChallenge()">Restart</button>
+      </div>
+      <p id="challengeFeedback" style="text-align:center;margin-top:18px"></p>
+      <h3 id="challengeScore">Score: 0 / 5</h3>
+    </div>
+  </section>
+
+  <section id="exam" class="hidden">
+    <div class="card">
+      <span class="badge"> Practice Exam</span>
+      <h2>🇹🇼 Mathematics Entrance-Exam Practice</h2>
+      <p>This is an <b>unofficial practice exam</b> inspired by a formal Taiwan-style test layout. It is not an official Taiwanese examination.</p>
+      <div class="rule">
+        <div><b>Subject</b><br>Mathematics</div>
+        <div><b>Topic</b><br>MDAS & PEMDAS</div>
+        <div><b>Items</b><br>10 questions</div>
+        <div><b>Time</b><br>10 minutes</div>
+      </div>
+      <div class="tip"><b>Instructions:</b> Choose one answer per question. No calculator is needed. Submit before the timer ends.</div>
+      <br>
+      <button class="primary" onclick="startExam()">Start Exam</button>
+      <button class="secondary" onclick="resetExam()">Reset</button>
+      <p id="examTimer" style="font-size:22px;font-weight:bold;text-align:center;margin:18px 0">Time: 10:00</p>
+      <div class="progress"><span id="examProgress"></span></div>
+      <div id="examArea" class="hidden">
+        <p id="examQuestionNumber"></p>
+        <div class="quiz-question" id="examQuestion"></div>
+        <div id="examChoices" class="choice-grid"></div>
+        <p id="examExplanation" class="tip hidden"></p>
+        <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+          <button class="secondary" onclick="previousExamQuestion()">Previous</button>
+          <button class="primary" onclick="nextExamQuestion()">Next</button>
+          <button class="primary" onclick="submitExam()">Submit Exam</button>
+        </div>
+      </div>
+      <div id="examResult" class="hidden"></div>
+    </div>
+  </section>
+
+
+  <section id="interview" class="hidden">
+    <div class="card">
+      <span class="badge">Interview Reviewer</span>
+      <h2>Hindi to accurate, eto lang malimit na tanong</h2>
+      <p>Review common questions for a Taiwan job interview. Practice answering in <b>English</b>, then use the sample Mandarin translation when helpful.</p>
+      <div class="tip"><b>Interview reminder:</b> Be honest, speak clearly, show willingness to learn, follow company rules, and explain that you value safety and teamwork.</div>
+      <br>
+      <div class="rule">
+        <div><b>1</b><br>Read the question</div>
+        <div><b>2</b><br>Practice aloud</div>
+        <div><b>3</b><br>Check the sample</div>
+        <div><b>4</b><br>Try again</div>
+      </div>
+      <div class="exam-sheet">
+        <p id="interviewCount"></p>
+        <h3 id="interviewQuestion"></h3>
+        <p><b>Mandarin:</b> <span id="interviewMandarin"></span></p>
+        <p><b>Filipino meaning:</b> <span id="interviewFilipino"></span></p>
+        <button class="primary" onclick="showInterviewAnswer()">Show Sample Answer</button>
+        <button class="secondary" onclick="nextInterview()">Next Question</button>
+        <div id="interviewAnswer" class="step hidden"></div>
+      </div>
+    </div>
+    <div class="card">
+      <h2>🎤 Self-Introduction Practice</h2>
+      <p>Use this template and personalize it with your real information.</p>
+      <div class="step"><b>English sample:</b><br>
+      “Good morning. My name is Mark Joshua. I am a graduate of Bachelor of Science in Information Technology. I am hardworking, willing to learn, and able to work with a team. I respect company rules and safety procedures. I want to work in Taiwan to gain experience, support my family, and contribute to the company. Thank you.”</div>
+      <div class="step"><b>Simple Mandarin practice:</b><br>
+      “大家好，我叫 Mark Joshua。我畢業於資訊科技學系。我願意學習、努力工作，也能與團隊合作。我會遵守公司的規定和安全規則。謝謝。”<br>
+      <small>Dàjiā hǎo, wǒ jiào Mark Joshua. Wǒ bìyè yú zīxùn kējì xuéxì.</small></div>
+      <p class="tip">Only use details that are true about you. Practice slowly and confidently.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer>Keep practicing. Mistakes are part of learning! 💪</footer>
+
+<script>
+const practiceQuestions=[
+  {q:"8 + 4 × 2",a:16},
+  {q:"30 − 12 ÷ 3",a:26},
+  {q:"6 × 5 − 8",a:22},
+  {q:"18 ÷ 3 + 7",a:13},
+  {q:"(9 + 3) ÷ 4",a:3},
+  {q:"5 + 2² × 3",a:17},
+  {q:"24 ÷ 6 × 3",a:12},
+  {q:"(7 − 2) × 6",a:30},
+  {q:"40 − 5 × 4 + 2",a:22},
+  {q:"3² + 4 × 2",a:17}
+];
+let practiceIndex=0,practiceCorrect=0,currentPractice=null;
+let challengeIndex=0,challengeCorrect=0,currentChallenge=null;
+
+function showTab(id,button){
+  document.querySelectorAll('main section').forEach(s=>s.classList.add('hidden'));
+  document.getElementById(id).classList.remove('hidden');
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  button.classList.add('active');
+  if(id==='practice' && !currentPractice)newPractice();
+  if(id==='challenge' && !currentChallenge)startChallenge();
+}
+function quickCheck(btn,correct){
+  document.querySelectorAll('.choice').forEach(b=>b.classList.remove('selected'));
+  btn.classList.add('selected');
+  document.getElementById('quickFeedback').innerHTML=correct?
+  '<span class="success">Correct! Multiplication comes before addition. Answer: 16.</span>':
+  '<span class="error">Not quite. Multiply first: 4 × 2 = 8, then 8 + 8 = 16.</span>';
+}
+function newPractice(){
+  currentPractice=practiceQuestions[Math.floor(Math.random()*practiceQuestions.length)];
+  document.getElementById('practiceQuestion').textContent=currentPractice.q;
+  document.getElementById('practiceAnswer').value='';
+  document.getElementById('practiceFeedback').textContent='';
+  document.getElementById('practiceCount').textContent='Practice questions completed: '+practiceCorrect;
+  document.getElementById('practiceProgress').style.width=Math.min(practiceCorrect*10,100)+'%';
+}
+function checkPractice(){
+  if(!currentPractice)return;
+  const input=document.getElementById('practiceAnswer');
+  if(input.value===''){document.getElementById('practiceFeedback').innerHTML='<span class="error">Enter an answer first.</span>';return;}
+  const answer=Number(input.value);
+  if(answer===currentPractice.a){
+    practiceCorrect++;
+    document.getElementById('practiceFeedback').innerHTML='<span class="success">Correct! 🎉</span>';
+  }else{
+    document.getElementById('practiceFeedback').innerHTML='<span class="error">Try again. Remember the order of operations.</span>';
+  }
+  document.getElementById('practiceCount').textContent='Practice questions completed: '+practiceCorrect;
+  document.getElementById('practiceProgress').style.width=Math.min(practiceCorrect*10,100)+'%';
+}
+function startChallenge(){
+  challengeIndex=0;challengeCorrect=0;currentChallenge=null;
+  document.getElementById('challengeFeedback').textContent='';
+  document.getElementById('challengeScore').textContent='Score: 0 / 5';
+  nextChallenge();
+}
+function nextChallenge(){
+  if(challengeIndex>=5){
+    document.getElementById('challengeQuestion').textContent='🏆 Challenge Complete!';
+    document.getElementById('challengeFeedback').innerHTML='<span class="success">Final score: '+challengeCorrect+' / 5</span>';
+    return;
+  }
+  currentChallenge=practiceQuestions[Math.floor(Math.random()*practiceQuestions.length)];
+  document.getElementById('challengeQuestion').textContent=currentChallenge.q;
+  document.getElementById('challengeAnswer').value='';
+  document.getElementById('challengeFeedback').textContent='';
+}
+function checkChallenge(){
+  if(!currentChallenge)return;
+  const input=document.getElementById('challengeAnswer');
+  if(input.value==='')return;
+  const answer=Number(input.value);
+  if(answer===currentChallenge.a){
+    challengeCorrect++;
+    document.getElementById('challengeFeedback').innerHTML='<span class="success">Correct! 🎉</span>';
+  }else{
+    document.getElementById('challengeFeedback').innerHTML='<span class="error">Incorrect. Correct answer: '+currentChallenge.a+'</span>';
+  }
+  challengeIndex++;
+  document.getElementById('challengeScore').textContent='Score: '+challengeCorrect+' / '+challengeIndex;
+  setTimeout(nextChallenge,900);
+}
+newPractice();
+
+const examQuestions = [
+  {q:"12 + 6 × 2 =", choices:["36","24","30","18"], a:2, explanation:"Multiply first: 6 × 2 = 12; then 12 + 12 = 24.", correct:1},
+  {q:"40 − 18 ÷ 3 =", choices:["22","34","28","16"], a:1, explanation:"Divide first: 18 ÷ 3 = 6; then 40 − 6 = 34.", correct:1},
+  {q:"(8 + 4) × 2 =", choices:["24","16","20","28"], a:0, explanation:"Parentheses first: 8 + 4 = 12; then 12 × 2 = 24.", correct:1},
+  {q:"3² + 5 × 2 =", choices:["26","19","16","21"], a:1, explanation:"Exponent: 3² = 9. Multiply: 5 × 2 = 10. Add: 9 + 10 = 19.", correct:1},
+  {q:"36 ÷ 6 × 4 =", choices:["1.5","24","6","18"], a:1, explanation:"Division and multiplication go left to right: 36 ÷ 6 = 6; 6 × 4 = 24.", correct:1},
+  {q:"50 − 8 × 3 + 4 =", choices:["30","20","38","18"], a:0, explanation:"Multiply first: 8 × 3 = 24. Then 50 − 24 + 4 = 30.", correct:1},
+  {q:"(15 − 5) ÷ 2 + 7 =", choices:["10","12","15","8"], a:1, explanation:"Parentheses: 15 − 5 = 10. Divide: 10 ÷ 2 = 5. Add 7 = 12.", correct:1},
+  {q:"2 + 4 × (6 − 3) =", choices:["14","18","20","10"], a:0, explanation:"Parentheses: 6 − 3 = 3. Multiply: 4 × 3 = 12. Add 2 = 14.", correct:1},
+  {q:"72 ÷ (3 × 4) =", choices:["24","6","9","12"], a:1, explanation:"Parentheses: 3 × 4 = 12. Then 72 ÷ 12 = 6.", correct:1},
+  {q:"5² − 3 × 4 =", choices:["13","16","10","9"], a:0, explanation:"Exponent: 5² = 25. Multiply: 3 × 4 = 12. Subtract: 25 − 12 = 13.", correct:1}
+];
+let examIndex=0, examAnswers=[], examSeconds=600, examInterval=null, examStarted=false;
+
+function startExam(){
+  clearInterval(examInterval);
+  examIndex=0; examAnswers=Array(10).fill(null); examSeconds=600; examStarted=true;
+  document.getElementById('examArea').classList.remove('hidden');
+  document.getElementById('examResult').classList.add('hidden');
+  document.getElementById('examExplanation').classList.add('hidden');
+  renderExamQuestion();
+  updateExamTimer();
+  examInterval=setInterval(()=>{
+    examSeconds--;
+    updateExamTimer();
+    if(examSeconds<=0){
+      clearInterval(examInterval);
+      submitExam(true);
+    }
+  },1000);
+}
+function updateExamTimer(){
+  const mins=Math.floor(examSeconds/60).toString().padStart(2,'0');
+  const secs=(examSeconds%60).toString().padStart(2,'0');
+  document.getElementById('examTimer').textContent='Time: '+mins+':'+secs;
+}
+function renderExamQuestion(){
+  const item=examQuestions[examIndex];
+  document.getElementById('examQuestionNumber').textContent='Question '+(examIndex+1)+' of '+examQuestions.length;
+  document.getElementById('examQuestion').textContent=item.q;
+  document.getElementById('examProgress').style.width=((examIndex+1)/examQuestions.length*100)+'%';
+  const choices=document.getElementById('examChoices');
+  choices.innerHTML='';
+  item.choices.forEach((choice,i)=>{
+    const b=document.createElement('button');
+    b.className='exam-option'+(examAnswers[examIndex]===i?' chosen':'');
+    b.textContent=String.fromCharCode(65+i)+'. '+choice;
+    b.onclick=()=>{
+      examAnswers[examIndex]=i;
+      renderExamQuestion();
+    };
+    choices.appendChild(b);
+  });
+}
+function nextExamQuestion(){
+  if(examIndex<examQuestions.length-1){examIndex++;renderExamQuestion();}
+}
+function previousExamQuestion(){
+  if(examIndex>0){examIndex--;renderExamQuestion();}
+}
+function submitExam(auto=false){
+  if(!examStarted)return;
+  clearInterval(examInterval);examStarted=false;
+  let score=0;
+  examQuestions.forEach((item,i)=>{if(examAnswers[i]===item.a)score++;});
+  const percent=Math.round(score/examQuestions.length*100);
+  let grade=percent>=90?'Excellent':percent>=75?'Passed Practice Level':percent>=60?'Keep Practicing':'Review the Lessons';
+  document.getElementById('examResult').classList.remove('hidden');
+  document.getElementById('examResult').innerHTML=
+    '<div class="exam-sheet"><h3>Exam Result</h3>'+
+    '<p><b>Score:</b> '+score+' / '+examQuestions.length+' ('+percent+'%)</p>'+
+    '<p><b>Result:</b> '+grade+'</p>'+
+    (auto?'<p class="error">Time expired. Your answers were submitted automatically.</p>':'')+
+    '<h3>Answer Review</h3>'+
+    examQuestions.map((item,i)=>{
+      const ok=examAnswers[i]===item.a;
+      return '<div class="step"><b>'+(i+1)+'. '+(ok?'✓ Correct':'✗ Incorrect')+
+      '</b><br>Your answer: '+(examAnswers[i]===null?'Not answered':item.choices[examAnswers[i]])+
+      '<br>Correct answer: '+item.choices[item.a]+
+      '<br><small>'+item.explanation+'</small></div>';
+    }).join('')+'</div>';
+  document.getElementById('examArea').classList.add('hidden');
+}
+function resetExam(){
+  clearInterval(examInterval);examStarted=false;examIndex=0;examAnswers=[];
+  document.getElementById('examArea').classList.add('hidden');
+  document.getElementById('examResult').classList.add('hidden');
+  document.getElementById('examTimer').textContent='Time: 10:00';
+  document.getElementById('examProgress').style.width='0%';
+}
+
+
+const interviewQuestions=[
+ {q:"Tell me about yourself.",m:"請介紹你自己。",f:"Ipakilala ang iyong sarili.",a:"Good morning. My name is ____. I am hardworking, willing to learn, and able to work with a team. I want to gain experience and contribute to the company."},
+ {q:"Why do you want to work in Taiwan?",m:"你為什麼想去台灣工作？",f:"Bakit gusto mong magtrabaho sa Taiwan?",a:"I want to work in Taiwan to gain experience, improve my skills, support my family, and build a stable future."},
+ {q:"Why should we hire you?",m:"我們為什麼要雇用你？",f:"Bakit ka namin dapat kunin?",a:"You should hire me because I am responsible, hardworking, willing to learn, and ready to follow company policies and safety procedures."},
+ {q:"Are you willing to work overtime?",m:"你願意加班嗎？",f:"Handa ka bang mag-overtime?",a:"Yes, I am willing to work overtime when needed, as long as it follows company policy and labor rules."},
+ {q:"Can you work in a team?",m:"你可以團隊合作嗎？",f:"Kaya mo bang makipagtulungan sa team?",a:"Yes. I respect my coworkers, communicate properly, and help the team reach our goals."},
+ {q:"Can you follow instructions?",m:"你可以遵守指示嗎？",f:"Kaya mo bang sumunod sa instructions?",a:"Yes. I listen carefully, ask questions when something is unclear, and follow instructions correctly."},
+ {q:"How do you handle pressure?",m:"你如何處理壓力？",f:"Paano mo hinaharap ang pressure?",a:"I stay calm, prioritize my tasks, follow procedures, and ask for guidance when necessary."},
+ {q:"Are you willing to follow safety rules?",m:"你願意遵守安全規則嗎？",f:"Handa ka bang sumunod sa safety rules?",a:"Yes. Safety is important to me. I will wear the required protective equipment and follow all safety procedures."},
+ {q:"What will you do if you make a mistake?",m:"如果你犯錯，你會怎麼做？",f:"Ano ang gagawin mo kapag nagkamali ka?",a:"I will report the mistake honestly, ask how to correct it, learn from it, and avoid repeating it."},
+ {q:"How long do you plan to work with the company?",m:"你計畫在公司工作多久？",f:"Gaano katagal mong planong magtrabaho sa kumpanya?",a:"I plan to work responsibly for the long term, follow the contract, and continue improving my skills."}
+];
+let interviewIndex=0;
+function renderInterview(){
+ const item=interviewQuestions[interviewIndex];
+ document.getElementById('interviewCount').textContent='Question '+(interviewIndex+1)+' of '+interviewQuestions.length;
+ document.getElementById('interviewQuestion').textContent=item.q;
+ document.getElementById('interviewMandarin').textContent=item.m;
+ document.getElementById('interviewFilipino').textContent=item.f;
+ document.getElementById('interviewAnswer').classList.add('hidden');
+ document.getElementById('interviewAnswer').innerHTML='<b>Sample answer:</b><br>'+item.a;
+}
+function showInterviewAnswer(){document.getElementById('interviewAnswer').classList.remove('hidden');}
+function nextInterview(){interviewIndex=(interviewIndex+1)%interviewQuestions.length;renderInterview();}
+renderInterview();
+
+</script>
+</body>
+</html>
